@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Fragment,useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -19,18 +19,21 @@ import BlogIcon from '@mui/icons-material/Book';
 import HomeIcon from '@mui/icons-material/Home';
 import Drawer from '@mui/material/Drawer';
 import SvgIcon from '@mui/material/SvgIcon';
+import  ErEr  from '../assets/ErEr.svg?react';
 import { Link } from "react-router-dom";
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme ,TypographyVariant } from '@mui/material/styles';
 
 const pages = ['Home','About', 'Contact', 'Blog'];
 const pagesIcon = [HomeIcon ,ContactIcon ,AboutIcon ,BlogIcon ]
 interface buttonLinkProps {
     to: string;
     text:string;
-    sx?: SxProps<Theme>;
+    tsx?: SxProps<Theme>;
+    bsx?:SxProps<Theme>;
+    size?:TypographyVariant
 }
 function ResponsiveAppBar() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -38,43 +41,56 @@ function ResponsiveAppBar() {
   const ButtonLinker =   (props:buttonLinkProps) =>{
     return (
       <Button component={Link} to={props.to} 
-        sx={props.sx}>
-        {props.text}
+        sx={props.bsx}>
+        <Typography variant={props.size} sx={props.tsx}>{props.text}</Typography>
       </Button>
     );
   }
 
-    const DrawerList = (
-        <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+  const DrawerList = (
+      <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
         <List>
-            {pages.map((text, index) => (
+          {pages.map((text, index) => (
             <ListItem key={text} disablePadding>
-                <ListItemButton>
-                    <ListItemIcon >
-                        <SvgIcon component={pagesIcon[index]}></SvgIcon>
-                    </ListItemIcon>
+              {index == 0 ? 
+              <ListItemButton component={Link} to='/' >
+                <ListItemIcon >
+                  <SvgIcon component={pagesIcon[index]}></SvgIcon>
+                </ListItemIcon>
                 <ListItemText primary={text} />
-                </ListItemButton>
+              </ListItemButton>
+              :
+              <ListItemButton component={Link} to={text} >
+                <ListItemIcon >
+                  <SvgIcon component={pagesIcon[index]}></SvgIcon>
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+              }
+              
             </ListItem>
-            ))}
+          ))}
         </List>
-        </Box>
-    );
+      </Box>
+  );
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-            <ButtonLinker to='/' text='LOGO'
-              sx={{
+            <ButtonLinker to='/' text='ErEr' size="h5"
+              bsx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
+                color: 'inherit',
+              }}
+              tsx={{
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: 'inherit',
                 textDecoration: 'none',
+                textTransform:'none'
               }}
             >
             </ButtonLinker>
@@ -90,10 +106,23 @@ function ResponsiveAppBar() {
               <MenuIcon />
               </IconButton>
               <Drawer open={open} onClose={toggleDrawer(false)}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    my:2,
+                    display: { xs: 'flex' },
+                    justifyContent: 'center',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                  }}
+                >
+                  ErEr
+                </Typography>
                 {DrawerList}
               </Drawer>
             </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
             <Typography
               variant="h5"
               noWrap
@@ -110,15 +139,28 @@ function ResponsiveAppBar() {
                 textDecoration: 'none',
               }}
             >
-              LOGO
+              ErEr
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page,index) => (
-                index == 0 ? <></> :
+                index == 0 ? <Fragment key={index}></Fragment> :
                   <ButtonLinker
+                    key={index}
                     to={page}
                     text={page}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
+                    bsx={{
+                      mr: 2,
+                      display: { xs: 'none', md: 'flex' },
+                      color: 'inherit',
+                    }}
+                    tsx={{
+                      fontFamily: 'monospace',
+                      fontWeight: 600,
+                      letterSpacing: '.15rem',
+                      color: 'inherit',
+                      textDecoration: 'none',
+                      textTransform:'none'
+                    }}
                   >
                   </ButtonLinker>
               ))}
