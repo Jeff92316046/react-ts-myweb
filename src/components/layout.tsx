@@ -45,7 +45,8 @@ function ResponsiveAppBar() {
     );
   }
 
-  const DrawerList = (
+  const DrawerList = () => {
+    return(
       <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
         <List>
           {pages.map((text, index) => (
@@ -65,12 +66,11 @@ function ResponsiveAppBar() {
                 <ListItemText primary={text} />
               </ListItemButton>
               }
-              
             </ListItem>
           ))}
         </List>
-      </Box>
-  );
+      </Box>);
+    };
 
   return (
     <AppBar position="static">
@@ -118,7 +118,7 @@ function ResponsiveAppBar() {
                 >
                   ErEr
                 </Typography>
-                {DrawerList}
+                <DrawerList></DrawerList>
               </Drawer>
             </Box>
             <Typography
@@ -142,25 +142,25 @@ function ResponsiveAppBar() {
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page,index) => (
                 index == 0 ? <Fragment key={index}></Fragment> :
-                  <ButtonLinker
-                    key={index}
-                    to={page}
-                    text={page}
-                    bsx={{
-                      mr: 2,
-                      display: { xs: 'none', md: 'flex' },
-                      color: 'inherit',
-                    }}
-                    tsx={{
-                      fontFamily: 'monospace',
-                      fontWeight: 600,
-                      letterSpacing: '.15rem',
-                      color: 'inherit',
-                      textDecoration: 'none',
-                      textTransform:'none'
-                    }}
-                  >
-                  </ButtonLinker>
+                <ButtonLinker
+                  key={index}
+                  to={page}
+                  text={page}
+                  bsx={{
+                    mr: 2,
+                    display: { xs: 'none', md: 'flex' },
+                    color: 'inherit',
+                  }}
+                  tsx={{
+                    fontFamily: 'monospace',
+                    fontWeight: 600,
+                    letterSpacing: '.15rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    textTransform:'none'
+                  }}
+                >
+                </ButtonLinker>
               ))}
             </Box>
         </Toolbar>
