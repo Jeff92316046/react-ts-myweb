@@ -1,77 +1,31 @@
-import {Fragment,useState} from 'react';
+import { Fragment , useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+import ButtonLinker from './buttonlinker';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import DrawerList from './drawerlist';
 import AboutIcon from '@mui/icons-material/Info';
 import ContactIcon from '@mui/icons-material/ContactPage';
 import BlogIcon from '@mui/icons-material/Book';
 import HomeIcon from '@mui/icons-material/Home';
 import Drawer from '@mui/material/Drawer';
-import SvgIcon from '@mui/material/SvgIcon';
+import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
-import { SxProps, Theme ,TypographyVariant } from '@mui/material/styles';
+
 
 const pages = ['Home','About', 'Contact', 'Blog'];
 const pagesIcon = [HomeIcon ,ContactIcon ,AboutIcon ,BlogIcon ]
-interface buttonLinkProps {
-    to: string;
-    text:string;
-    tsx?: SxProps<Theme>;
-    bsx?:SxProps<Theme>;
-    size?:TypographyVariant
-}
+
 function ResponsiveAppBar() {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
-  const ButtonLinker =   (props:buttonLinkProps) =>{
-    return (
-      <Button component={Link} to={props.to} 
-        sx={props.bsx}>
-        <Typography variant={props.size} sx={props.tsx}>{props.text}</Typography>
-      </Button>
-    );
-  }
-
-  const DrawerList = () => {
-    return(
-      <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-        <List>
-          {pages.map((text, index) => (
-            <ListItem key={text} disablePadding>
-              {index == 0 ? 
-              <ListItemButton component={Link} to='/' >
-                <ListItemIcon >
-                  <SvgIcon component={pagesIcon[index]}></SvgIcon>
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-              :
-              <ListItemButton component={Link} to={text} >
-                <ListItemIcon >
-                  <SvgIcon component={pagesIcon[index]}></SvgIcon>
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-              }
-            </ListItem>
-          ))}
-        </List>
-      </Box>);
-    };
-
+  
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -118,7 +72,7 @@ function ResponsiveAppBar() {
                 >
                   ErEr
                 </Typography>
-                <DrawerList></DrawerList>
+                <DrawerList toggleDrawer={toggleDrawer} pagesIcon={pagesIcon} pages={pages}></DrawerList>
               </Drawer>
             </Box>
             <Typography
@@ -168,4 +122,5 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
+
 export default ResponsiveAppBar;
