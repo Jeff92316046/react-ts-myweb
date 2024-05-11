@@ -6,7 +6,7 @@ import { useState } from "react";
 
 
 const Home = () => {
-    const { height, width } = useWindowDimensions();
+    const { height } = useWindowDimensions();
     const [count, setCount] = useState(4    );
     const plus = () => () => {
         if(count > 1)setCount(count-1);

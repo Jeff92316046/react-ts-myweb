@@ -14,7 +14,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
-
+import ToggleColorMode from './thememode';
 
 const pages = ['Home','About', 'Contact', 'Blog'];
 
@@ -58,7 +58,7 @@ const Layout = () =>{
               >
               <MenuIcon />
               </IconButton>
-              <Drawer open={open} onClose={toggleDrawer(false)}>
+              <Drawer open={open} onClose={toggleDrawer(false)} sx={{flexDirection: 'column',display:"flex"}}>
                 <Typography
                   variant="h6"
                   sx={{
@@ -74,6 +74,9 @@ const Layout = () =>{
                   ErEr
                 </Typography>
                 <DrawerList toggleDrawer={toggleDrawer} pagesIcon={pagesIcon} pages={pages}></DrawerList>
+                <Box sx={{ display: { xs: 'flex' }, justifyContent: 'center',m:3}}>
+                  <ToggleColorMode></ToggleColorMode>
+                </Box>
               </Drawer>
             </Box>
             <Typography
@@ -118,6 +121,11 @@ const Layout = () =>{
                 </ButtonLinker>
               ))}
             </Box>
+            <Box sx={{display: { xs: 'none', md: 'flex' }}}>
+              <ToggleColorMode></ToggleColorMode>
+            </Box>
+            
+
         </Toolbar>
       </Container>
     </AppBar>

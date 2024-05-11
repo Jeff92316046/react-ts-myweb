@@ -19,7 +19,7 @@ interface drawerListProps {
 
 const DrawerList = (props:drawerListProps) => {
     return(
-      <Box sx={{ width: 250 }} role="presentation" onClick={props.toggleDrawer(false)}>
+      <Box sx={{ width: 250 ,flexGrow:1}} role="presentation" onClick={props.toggleDrawer(false)}>
         <List>
           {props.pages.map((text, index) => (
             <ListItem key={text} disablePadding>
