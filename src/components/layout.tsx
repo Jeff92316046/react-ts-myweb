@@ -17,9 +17,10 @@ import { Link } from "react-router-dom";
 
 
 const pages = ['Home','About', 'Contact', 'Blog'];
+
 const pagesIcon = [HomeIcon ,ContactIcon ,AboutIcon ,BlogIcon ]
 
-function ResponsiveAppBar() {
+const Layout = () =>{
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -123,4 +124,4 @@ function ResponsiveAppBar() {
   );
 }
 
-export default ResponsiveAppBar;
+export default Layout;
