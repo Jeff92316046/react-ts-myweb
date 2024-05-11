@@ -16,7 +16,6 @@ const Home = () => {
         <Box height={height*0.8}>
             <Grid container height="100%">
                 <Grid xs={count} item>
-                    
                 </Grid>
                 <Grid xs={4} item alignContent={"center"}>
                     <Box component="img"  src={cat}
