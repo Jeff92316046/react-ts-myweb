@@ -47,6 +47,9 @@ const About = () => {
                             <Typography sx={{ m:2,mx:4 }} variant="body1">
                                 typescript
                             </Typography>
+                            <Typography sx={{ m:2,mx:4 }} variant="body1">
+                                go(正在學)
+                            </Typography>
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Typography sx={{ m:1,mx:3 }} variant="h6">

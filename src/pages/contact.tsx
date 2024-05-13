@@ -1,6 +1,7 @@
-import { Box, Card, CardContent, Grid, Typography, colors } from "@mui/material";
+import { Box, Card, CardContent,  Typography, useTheme } from "@mui/material";
 
 const Contact = () => {
+    const theme = useTheme();
     return (
         <Box >
             <Card sx={{m:4}}>
@@ -16,15 +17,15 @@ const Contact = () => {
                     </Typography>
                     <Typography sx={{ m:3,mx:4 }} variant="body1">
                         E-mail :&nbsp;  
-                        <Typography sx={{color:"white"}} component="a" href="mailto:jeffliao92316046@gmail.com">jeffliao92316046@gmail.com</Typography>
+                        <Typography sx={{color:theme.palette.text.primary}} component="a" href="mailto:jeffliao92316046@gmail.com">jeffliao92316046@gmail.com</Typography>
                     </Typography>
                     <Typography sx={{ m:3,mx:4 }} variant="body1">
                         Github :&nbsp; 
-                        <Typography sx={{color:"white"}} component="a" href="https://github.com/Jeff92316046">Jeff92316046</Typography>
+                        <Typography sx={{color:theme.palette.text.primary}} component="a" href="https://github.com/Jeff92316046">Jeff92316046</Typography>
                     </Typography>
                     <Typography sx={{ m:3,mx:4 }} variant="body1">
                         Facebook :&nbsp;     
-                        <Typography sx={{color:"white"}} component="a" href="https://www.facebook.com/profile.php?id=100006762961441">廖俊智(Er Er)</Typography>
+                        <Typography sx={{color:theme.palette.text.primary}} component="a" href="https://www.facebook.com/profile.php?id=100006762961441">廖俊智(Er Er)</Typography>
                     </Typography>
                 </CardContent>
             </Card>
