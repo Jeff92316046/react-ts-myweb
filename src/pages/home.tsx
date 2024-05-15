@@ -18,7 +18,7 @@ const Home = () => {
                 <Grid xs={count} item>
                 </Grid>
                 <Grid xs={4} item alignContent={"center"}>
-                    <Box component="img"  src={cat}
+                    <Box component="img"  src={cat} alt="cat"
                         sx={{
                             width: "100%",
                             mx:2,
