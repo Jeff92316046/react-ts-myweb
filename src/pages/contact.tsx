@@ -3,6 +3,7 @@ import useWindowDimensions from "../components/getwindowsdimensions";
 
 const Contact = () => {
     const theme = useTheme();
+    const a = "aaa"
     const { width } = useWindowDimensions();
     return (
         <Box >
